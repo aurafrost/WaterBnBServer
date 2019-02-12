@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.waterbnb.dao.ListingDao;
 import com.waterbnb.model.Listing;
+import com.waterbnb.model.User;
 
 @RestController
 @RequestMapping(path = "/listing")
@@ -39,6 +40,12 @@ public class ListingController {
 	public ResponseEntity<Listing> getListingById(@PathVariable int listingId){
 		Listing listing=listingDao.findByListingId(listingId);
 		return new ResponseEntity<>(listing,HttpStatus.OK);
+	}
+	
+	@RequestMapping(path = "/user/",method = RequestMethod.GET)
+	public ResponseEntity<List<Listing>> getListingsByUser(@RequestBody User user){
+		List<Listing>list=listingDao.findByUser(user);
+		return new ResponseEntity<>(list,HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)

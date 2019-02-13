@@ -11,5 +11,5 @@ import com.waterbnb.model.Review;
 public interface ReviewDao extends CrudRepository<Review,Integer>{
 	//read
 	List<Review> findAll();
-	List<Review> findAllByListing(int listingId);
+	List<Review> findByListing(int listingId);
 }

@@ -35,9 +35,6 @@ public class Listing {
 	@Column(name = "cost")
 	private double cost;
 	
-	@Column(name = "details")
-	private String details;
-	
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
@@ -50,13 +47,12 @@ public class Listing {
 		
 	}
 	
-	public Listing(String address, String description, String poolSize, double cost, String details, User user,
+	public Listing(String address, String description, String poolSize, double cost, User user,
 			List<Review> review) {
 		this.address = address;
 		this.description = description;
 		this.poolSize = poolSize;
 		this.cost = cost;
-		this.details = details;
 		this.user = user;
 		this.review = review;
 	}
@@ -101,14 +97,6 @@ public class Listing {
 		this.cost = cost;
 	}
 
-	public String getDetails() {
-		return details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -128,7 +116,7 @@ public class Listing {
 	@Override
 	public String toString() {
 		return "Listing [listingId=" + listingId + ", address=" + address + ", poolSize=" + poolSize + ", cost=" + cost
-				+ ", details=" + details + ", user=" + user + ", review=" + review + "]";
+				+ ", user=" + user + ", review=" + review + "]";
 	}
 	
 	

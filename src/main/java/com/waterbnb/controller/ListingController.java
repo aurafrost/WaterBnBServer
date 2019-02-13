@@ -57,7 +57,10 @@ public class ListingController {
 	@RequestMapping(path = "/{listingId}", method = RequestMethod.PUT)
 	public ResponseEntity<Listing> updateListing(@PathVariable int listingId, @RequestBody Listing listing){
 		Listing l=listingDao.findByListingId(listingId);
-		//do updates here
+		l.setAddress(listing.getAddress());
+		l.setCost(listing.getCost());
+		l.setDescription(listing.getDescription());
+		l.setPoolSize(listing.getPoolSize());
 		Listing l2=listingDao.save(l);
 		return new ResponseEntity<>(l2, HttpStatus.OK);
 	}
